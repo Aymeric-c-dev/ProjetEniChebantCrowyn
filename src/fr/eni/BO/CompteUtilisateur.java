@@ -1,4 +1,4 @@
-package fr.eni.CompteUtilisateur.bo;
+package fr.eni.BO;
 
 public class CompteUtilisateur {
 	/*

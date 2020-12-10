@@ -34,22 +34,22 @@ public class ServletPoolConnexion extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		try {
-			Context context = new InitialContext();
+			
 			
 			//Recherche de la DataSource
 			
-			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/pool_cnx");
+			Connection cnx = ConnectionProvider.getConnection();
 			
-			//Demande une connexion. La méthode getConnection met en attente tant qu'il n'y a pas de co dispo dans le pull.
-			
-			Connection cnx = dataSource.getConnection();
-			out.print("La connexion est" + (cnx.isClosed()?"fermée":"ouverte")+".");
+		
+			System.out.println("bien ouvert");
+		
+		
 			
 			//Libérer la connexion lorsque l'on en a plus besoin
 			cnx.close();//La connexion n'est pas fermée mais remise dans le pool.
 			
 			
-		} catch (NamingException | SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

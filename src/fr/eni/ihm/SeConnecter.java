@@ -1,4 +1,4 @@
-package fr.eni.BLL;
+package fr.eni.ihm;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ public class SeConnecter extends HttpServlet {
 		String mdp = request.getParameter("mdp");
 		System.out.println("logs : "+ login +" et "+ mdp);
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	
