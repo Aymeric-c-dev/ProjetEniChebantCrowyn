@@ -22,11 +22,11 @@
 	%>
 
 	<% 
-		List<Integer> listeCodesErreur = (list<Integer>)request.getAttribute("listeCodesErreur");
+		List<Integer> listeCodesErreur = (List<Integer>)request.getAttribute("listeCodesErreur");
 		if (listeCodesErreur !=null)
 		{
 	%>
-	<p style="">Erreur, impossible de se connecté:</p>
+	<p style="">Erreur, impossible de se connecter:</p>
 	<%
 			for (int codeErreur:listeCodesErreur){
 	%>

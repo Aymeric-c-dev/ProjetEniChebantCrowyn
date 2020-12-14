@@ -50,7 +50,7 @@ public class ServletPoolConnexion extends HttpServlet {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			out.println("Une erreur est survenue lors de l'utilisation de la Base de donnée : " + e.getMessage());

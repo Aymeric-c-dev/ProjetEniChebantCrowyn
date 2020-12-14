@@ -10,7 +10,7 @@
 
 	<servlet>
 		<servlet-name>Seconnecter</servlet-name>
-		<servlet-class>fr.eni.BLL.SeConnecter</servlet-class>
+		<servlet-class>fr.eni.Servlet.SeConnecter</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Seconnecter</servlet-name>
