@@ -23,6 +23,16 @@ public class CompteUtilisateur {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	
+	public CompteUtilisateur(String email, String motDePasse) {
+		super();
+		this.email = email;
+		this.motDePasse = motDePasse;
+	}
+
+
+
 	public CompteUtilisateur(String pseudo, String nom, String prenom, String email, String telephone, int rue,
 			int codePostal, String ville, String motDePasse, int credit, int administrateur, int numeroUtilisateur) {
 		super();
