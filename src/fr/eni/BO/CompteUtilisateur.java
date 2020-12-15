@@ -16,6 +16,7 @@ public class CompteUtilisateur {
 	private int credit;
 	private int administrateur;
 	private int numeroUtilisateur;
+	private boolean connected;
 
 	// le constructeur pour créer instance Utilisateur
 
@@ -184,5 +185,7 @@ public class CompteUtilisateur {
 			return false;
 		return true;
 	}
-	
+	public void setConnected(boolean connected) {
+		this.connected=connected;
+	}
 }

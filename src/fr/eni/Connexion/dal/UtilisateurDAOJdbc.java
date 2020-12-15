@@ -10,31 +10,49 @@ import fr.eni.Connexion.dal.*;
 import fr.eni.Exception.BusinessException;
 
 class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
+
 	private static final String SELECT = "SELECT no_utilisateur,pseudo,email  FROM UTILISATEURS WHERE (pseudo = ? OR email= ? AND mot_de_passe=?)";
-	Statement stmt;
+
 	@Override
 	public void select(CompteUtilisateur compteUtilisateur) throws BusinessException {
+
 		if (compteUtilisateur == null) {
 			BusinessException businessException = new BusinessException();
 			businessException.ajouterErreur(CodesResultatDAL.INSERT_OBJET_NULL);
 			throw businessException;
 		}
 		try (Connection cnx = ConnectionProvider.getConnection()) {
-			 stmt = cnx.createStatement();
-			stmt.setString(1,compteUtilisateur.getPseudo());
-			stmt.toString(2,compteuUtilisateur.getemail())
-			stmt.executeQuery(SELECT);
-			ResultSet rs= pstmt.executeQuery();
-			while(rs.next())
-			{  ,fhgjhùpç dtsohjgntredh gùurei(pà*gnire(Mgh nàp))
-			}
+			String pseudo = compteUtilisateur.getPseudo();
+			String email = compteUtilisateur.getEmail();
+			String mdp = compteUtilisateur.getMotDePasse();
 
+			PreparedStatement ptmt = cnx.prepareStatement(SELECT);
+			ptmt.setString(1, pseudo);
+			ptmt.setString(2, email);
+			ptmt.setString(3, mdp);
+			ptmt.executeQuery();
+			ResultSet rs = ptmt.executeQuery();
+			while (rs.next()) {
+				if (rs.equals(pseudo)) {
+					if (rs.equals(mdp)) {
+						compteUtilisateur.setConnected(true);
+					}
+					if (rs.equals(email)) {
+						if (rs.equals(mdp)) {
+							compteUtilisateur.setConnected(true);
+						}
+					}
+				} else {
+					compteUtilisateur.setConnected(false);
+					System.out.println("traitement en cours");
+				}
+			}
 		}
-	 catch (Exception e)
-	{
+
+		catch (Exception e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
-			throw businessException;	
+			throw businessException;
+		}
 	}
-}
 }

@@ -8,7 +8,7 @@ import fr.eni.Exception.BusinessException;
 
 public interface UtilisateurDAO {
 
-	public void select(CompteUtilisateur compteutilisateur) throws  BusinessException;
+	public void select(CompteUtilisateur compteUtilisateur) throws  BusinessException;
 	
 	
 }
