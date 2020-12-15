@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.BLL.ConnexionManager;
 import fr.eni.BO.CompteUtilisateur;
-
+import fr.eni.Exception.BusinessException;
+import java.util.ArrayList;
 /**
  * Servlet implementation class SeConnecter
  */
@@ -39,11 +40,11 @@ public class SeConnecter extends HttpServlet {
 		request.setAttribute("connexion", CompteUtilisateur);
 		}
 		catch(NumberFormatException e) {
-			List<Integer>listeCodesErreur=newArrayList<>();
-			listeCodesErreur.add(CodesResulatServlets.FORMAT_AVIS_NOTE_ERREUR);
+			List<Integer>listeCodesErreur=new ArrayList<>();
+			listeCodesErreur.add(CodesResulatServlet.FORMAT_SAISIE_ERREUR);
 			request.setAttribute("listeCoeesErrerur", listeCodesErreur);
 		}catch (BusinessException e) {
-			request.setAttribute("listeCodesErreur",e.getListeCodesErreur());
+			request.setAttribute("listeCodesErreur",e.getListeCodeErreur());
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/Pages/Connexion/Connexion.html");

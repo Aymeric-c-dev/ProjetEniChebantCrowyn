@@ -11,7 +11,7 @@ import fr.eni.Exception.BusinessException;
 
 class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
-	private static final String SELECT = "SELECT no_utilisateur,pseudo,email  FROM UTILISATEURS WHERE (pseudo = ? OR email= ? AND mot_de_passe=?)";
+	private static final String SELECT = "SELECT no_utilisateur,pseudo,email  FROM UTILISATEURS WHERE (pseudo = ? OR email= ?) AND mot_de_passe=?";
 
 	@Override
 	public void select(CompteUtilisateur compteUtilisateur) throws BusinessException {
@@ -32,20 +32,10 @@ class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			ptmt.setString(3, mdp);
 			ptmt.executeQuery();
 			ResultSet rs = ptmt.executeQuery();
-			while (rs.next()) {
-				if (rs.equals(pseudo)) {
-					if (rs.equals(mdp)) {
-						compteUtilisateur.setConnected(true);
-					}
-					if (rs.equals(email)) {
-						if (rs.equals(mdp)) {
-							compteUtilisateur.setConnected(true);
-						}
-					}
-				} else {
-					compteUtilisateur.setConnected(false);
-					System.out.println("traitement en cours");
-				}
+			if (rs.next()) { // modifier en if  
+				
+				compteUtilisateur.setConnected(true);
+								
 			}
 		}
 

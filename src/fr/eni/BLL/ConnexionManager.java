@@ -32,12 +32,12 @@ public class ConnexionManager {
 	}
 
 	private void validerMoTdePasse(fr.eni.Connexion.dal.UtilisateurDAO utilisateurDAO2, BusinessException exception) {
-		// TODO Auto-generated method stub
+	
 		
 	}
 
 	private void valideremail(fr.eni.Connexion.dal.UtilisateurDAO utilisateurDAO2, BusinessException exception) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }
